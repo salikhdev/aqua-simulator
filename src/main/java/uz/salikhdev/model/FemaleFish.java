@@ -35,6 +35,13 @@ public class FemaleFish extends Fish {
 
     public boolean tryMate() {
         if (isMating.compareAndSet(false, true)) {
+            log.info("🐟 {} is mating...", getId());
+            try {
+                TimeUnit.SECONDS.sleep(2);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                return false;
+            }
             bornFish();
             isMating.set(false);
             return true;

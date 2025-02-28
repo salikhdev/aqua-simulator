@@ -40,6 +40,7 @@ public abstract class Fish implements Runnable {
             return;
         }
         isAlive = false;
+        scheduledTask.cancel(true);
         log.error("{} {} has died.", gender.name(), id);
         aquarium.removeFish(this);
     }
